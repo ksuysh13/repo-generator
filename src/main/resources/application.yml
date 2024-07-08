@@ -1,0 +1,17 @@
+application:
+  name: repo_generator
+  baseDir: "C:\\repositories"
+source:
+  name: GitHub
+  token: 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
+  userId: UserID
+  userName: ksuysh13
+  url: "https://github.com/"
+  api: "https://api.github.com/"
+target:
+  name: BitBucket
+  token: ATBBTFV3f36pr3EZ6nP9JXH6m8bhE2DE7DDD
+  userId: UserID
+  userName: rybakovakseniia03
+  url: "https://%s:%s@bitbucket.org/"
+  api: "https://api.bitbucket.org/2.0/"
