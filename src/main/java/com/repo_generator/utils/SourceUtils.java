@@ -1,8 +1,6 @@
 package com.repo_generator.utils;
 
-import com.repo_generator.config.AppConfig;
 import com.repo_generator.config.SourceConfig;
-import org.eclipse.jgit.api.CloneCommand;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.PullResult;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -17,7 +15,7 @@ import java.io.File;
 import java.io.IOException;
 
 @Component
-public class SourceUtils extends AbcUtils {
+public class SourceUtils extends GitUtils {
     private static final Logger logger = LoggerFactory.getLogger(SourceUtils.class);
     @Autowired
     private SourceConfig config;

@@ -13,5 +13,6 @@ target:
   token: ATBBTFV3f36pr3EZ6nP9JXH6m8bhE2DE7DDD
   userId: UserID
   userName: rybakovakseniia03
+  workspace: ssau_practice
   url: "https://%s:%s@bitbucket.org/"
   api: "https://api.bitbucket.org/2.0/"

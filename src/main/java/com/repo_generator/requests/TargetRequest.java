@@ -14,7 +14,7 @@ import java.util.Base64;
 import java.util.List;
 
 @Component
-public class TargetRequest extends AbcRequest {
+public class TargetRequest extends GitApiRequest {
     @Autowired
     private TargetConfig config;
 
@@ -30,7 +30,7 @@ public class TargetRequest extends AbcRequest {
     @Override
     public List<GitRepository> getRepositoriesRequest() {
         try {
-            URI uri = URI.create(config.getApi() + "repositories/ssau_practice");
+            URI uri = URI.create(config.getApi() + "repositories/" + config.getWorkspace());
             ResponseEntity<GitRepository[]> response = restTemplate.exchange(
                     uri,
                     HttpMethod.GET,
@@ -48,7 +48,8 @@ public class TargetRequest extends AbcRequest {
     public GitRepository getRepositoryRequest(String repositoryName) {
         try {
             URI uri = URI.create(config.getApi() + String.format(
-                    "repositories/ssau_practice/%s",
+                    "repositories/%s/%s",
+                    config.getWorkspace(),
                     repositoryName
             ));
             ResponseEntity<GitRepository> response = restTemplate.exchange(
@@ -67,7 +68,8 @@ public class TargetRequest extends AbcRequest {
     @Override
     public void createRepositoryRequest(String repositoryName) {
         URI uri = URI.create(config.getApi() + String.format(
-                "repositories/ssau_practice/%s",
+                "repositories/%s/%s",
+                config.getWorkspace(),
                 repositoryName
         ));
         HttpHeaders headers = createHeaders();

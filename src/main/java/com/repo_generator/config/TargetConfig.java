@@ -12,6 +12,7 @@ public class TargetConfig {
     private String token;
     private String userId;
     private String userName;
+    private String workspace;
     private String url;
     private String api;
 }

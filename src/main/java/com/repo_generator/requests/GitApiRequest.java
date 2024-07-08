@@ -6,10 +6,10 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-public abstract class AbcRequest {
+public abstract class GitApiRequest {
     protected RestTemplate restTemplate;
 
-    public AbcRequest() {
+    public GitApiRequest() {
         this.restTemplate = new RestTemplate();
     }
 

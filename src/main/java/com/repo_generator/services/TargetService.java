@@ -38,11 +38,11 @@ public class TargetService {
                 logger.debug("Call a push method");
                 boolean success = utils.updateTargetRepository(repositoryDir, repositoryName);
                 if (!success) {
-                    logger.error("Error push repository");
+                    logger.error("Error push repository {}", repositoryName);
                     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error push repository");
                 }
             } catch (IOException e) {
-                logger.error("Error push repository {}", e.getMessage());
+                logger.error("Error push repository {} {}", e.getMessage(), repositoryName);
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error push repository");
             }
         } else {
@@ -68,16 +68,11 @@ public class TargetService {
             logger.debug("repositories dir is empty");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Repositories dir is empty");
         }
-        List<GitRepository> repositories = request.getRepositoriesRequest();
         for (File repositoryDir : repositoryDirs){
-            GitRepository repository = repositories
-                    .stream()
-                    .filter(r -> r.getName().equals(repositoryDir.getName()))
-                    .findFirst()
-                    .orElse(null);
+            GitRepository repository = request.getRepositoryRequest(repositoryDir.getName());
             ResponseEntity<String> update = processUpdateRepository(repositoryDir, repository);
             if (update != null) return update;
         }
-        return ResponseEntity.ok("");
+        return ResponseEntity.ok("Repositories synchronized successfully");
     }
 }

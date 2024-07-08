@@ -10,13 +10,12 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.ParameterizedType;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 
 @Component
-public class SourceRequest extends AbcRequest {
+public class SourceRequest extends GitApiRequest {
     @Autowired
     private SourceConfig config;
 

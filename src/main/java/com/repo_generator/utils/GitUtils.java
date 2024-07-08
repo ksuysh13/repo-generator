@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 
-public abstract class AbcUtils {
+public abstract class GitUtils {
     @Autowired
     private AppConfig config;
 
