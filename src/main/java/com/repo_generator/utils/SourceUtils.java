@@ -36,6 +36,7 @@ public class SourceUtils extends GitUtils {
                     .call();
             return true;
         } catch (GitAPIException e) {
+            logger.error("Error update repository {}", e.getMessage());
             return false;
         }
     }
@@ -56,6 +57,7 @@ public class SourceUtils extends GitUtils {
         ) {
             return true;
         } catch (GitAPIException e) {
+            logger.error("Error clone repository {}", e.getMessage());
             return false;
         }
     }

@@ -58,7 +58,7 @@ public class TargetService {
         GitRepository repository = request.getRepositoryRequest(repositoryName);
         ResponseEntity<String> update = processUpdateRepository(repositoryDir, repository);
         if (update != null) return update;
-        return ResponseEntity.ok("Repository updated successfully");
+        return ResponseEntity.ok("Target repository updated successfully");
     }
 
     public ResponseEntity<String> syncTargetRepositoriesHandler() {

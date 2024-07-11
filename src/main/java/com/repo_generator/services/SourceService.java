@@ -57,7 +57,16 @@ public class SourceService {
 
     public List<GitRepository> getRepositoriesHandler() {
         logger.info("Success getRepository method");
-        return request.getRepositoriesRequest();
+        List<GitRepository> repositories = request.getRepositoriesRequest();
+        File[] localRepositories = utils.getLocalRepositories();
+        for (File localRepo : localRepositories) {
+            for (GitRepository sourceRepo : repositories) {
+                if (localRepo.getName().equals(sourceRepo.getName())) {
+                    sourceRepo.setCloned(true);
+                }
+            }
+        }
+        return repositories;
     }
 
     public ResponseEntity<String> updateLocalRepositoryHandler(String repositoryName) {
@@ -70,7 +79,7 @@ public class SourceService {
         }
         ResponseEntity<String> update = processUpdateRepository(repositoryDir, repository);
         if (update != null) return update;
-        return ResponseEntity.ok("Repository updated successfully");
+        return ResponseEntity.ok("Local repository updated successfully");
     }
 
     public ResponseEntity<String> SyncLocalRepositoriesHandler() {
@@ -86,4 +95,5 @@ public class SourceService {
         }
         return ResponseEntity.ok("Repositories synchronized successfully");
     }
+
 }
